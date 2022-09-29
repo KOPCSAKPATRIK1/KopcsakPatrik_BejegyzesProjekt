@@ -20,6 +20,7 @@ public class Main {
         {
             System.out.println("Pozitiv egesz szamot adj meg!\n");
             sc.next();
+            sc.nextLine();
         }
         db = sc.nextInt();
         sc.nextLine();
@@ -29,7 +30,6 @@ public class Main {
             db = sc.nextInt();
             sc.nextLine();
         }
-
         for (int i = 0 ; i < db; i++)
         {
             System.out.print("add meg a bejegyzes szerzojét\n");
@@ -60,13 +60,49 @@ public class Main {
             _bejegyzesek.getBejegyzesek().get(rnd).like();
         }
 
-
-        System.out.print(_bejegyzesek);
-
-        System.out.print("Mi legyen a tartalom");
-
+        System.out.print("Mi legyen a tartalom a 2-es bejegyzesnel\n");
         String ujTartalom = sc.nextLine();
         _bejegyzesek.getBejegyzesek().get(1).setTartalom(ujTartalom);
+        System.out.print(_bejegyzesek);
+
+        int max = 0;
+        for (int i = 0; i < _bejegyzesek.getBejegyzesek().size(); i++)
+        {
+
+            if (_bejegyzesek.getBejegyzesek().get(i).getLikeok() > max)
+            {
+                max = _bejegyzesek.getBejegyzesek().get(i).getLikeok();
+
+            }
+        }
+        System.out.print(String.format("Legtobb like: %s", max));
+
+        boolean vane = false;
+        for (int i = 0; i < _bejegyzesek.getBejegyzesek().size(); i++)
+        {
+
+            if (_bejegyzesek.getBejegyzesek().get(i).getLikeok() > 35)
+            {
+                vane = true;
+
+            }
+        }
+        System.out.print("Van 35-nel tobb like: " + vane);
+
+        int kevesek = 0;
+        for (int i = 0; i < _bejegyzesek.getBejegyzesek().size(); i++)
+        {
+
+            if (_bejegyzesek.getBejegyzesek().get(i).getLikeok() < 15)
+            {
+                kevesek++;
+
+            }
+        }
+        System.out.print(String.format("15-nel kevesebb like: %s", kevesek));
+
+        
+
 
 
     }
