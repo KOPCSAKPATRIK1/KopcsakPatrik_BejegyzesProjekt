@@ -13,25 +13,29 @@ public class Main {
         Bejegyzesek _bejegyzesek = new Bejegyzesek(new Bejegyzes[]{b1, b2});
         int db;
 
-        System.out.print("Hany darab bejegyzest szeretnel hozzaadni?\n");
+        System.out.println("Hany darab bejegyzest szeretnel hozzaadni?\n");
 
 
-        while (!sc.hasNextInt()){
-            System.out.print("Pozitiv egesz szamot adj meg!");
+        while (!sc.hasNextInt())
+        {
+            System.out.println("Pozitiv egesz szamot adj meg!\n");
             sc.next();
         }
         db = sc.nextInt();
-        while (db <= 0){
-            System.out.print("Pozitiv egesz szamot adj meg!");
+        sc.nextLine();
+        while (db <= 0)
+        {
+            System.out.print("Pozitiv egesz szamot adj meg!\n");
             db = sc.nextInt();
+            sc.nextLine();
         }
 
         for (int i = 0 ; i < db; i++)
         {
             System.out.print("add meg a bejegyzes szerzojét\n");
-            String ujSzerzo =  sc.next();
+            String ujSzerzo =  sc.nextLine();
             System.out.print("add meg a bejegyzes tartalmat\n");
-            String ujTartalom =  sc.next();
+            String ujTartalom =  sc.nextLine();
             _bejegyzesek.getBejegyzesek().add(new Bejegyzes(ujSzerzo, ujTartalom));
         }
 
@@ -48,11 +52,21 @@ public class Main {
             System.err.println("hiba");
         }
 
-        System.out.print(_bejegyzesek.getBejegyzesek());
 
 
+        for (int i = 0; i < _bejegyzesek.getBejegyzesek().size() * 20; i++)
+        {
+            int rnd = (int)((Math.random() * (_bejegyzesek.getBejegyzesek().size() - 1)) + 1);
+            _bejegyzesek.getBejegyzesek().get(rnd).like();
+        }
 
 
+        System.out.print(_bejegyzesek);
+
+        System.out.print("Mi legyen a tartalom");
+
+        String ujTartalom = sc.nextLine();
+        _bejegyzesek.getBejegyzesek().get(1).setTartalom(ujTartalom);
 
 
     }
