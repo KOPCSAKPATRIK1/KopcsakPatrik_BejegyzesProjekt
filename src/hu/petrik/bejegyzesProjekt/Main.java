@@ -2,6 +2,8 @@ package hu.petrik.bejegyzesProjekt;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -75,7 +77,7 @@ public class Main {
 
             }
         }
-        System.out.print(String.format("Legtobb like: %s", max));
+        System.out.print(String.format("Legtobb like: %s\n", max));
 
         boolean vane = false;
         for (int i = 0; i < _bejegyzesek.getBejegyzesek().size(); i++)
@@ -87,7 +89,7 @@ public class Main {
 
             }
         }
-        System.out.print("Van 35-nel tobb like: " + vane);
+        System.out.print("Van 35-nel tobb like: " + vane + "\n");
 
         int kevesek = 0;
         for (int i = 0; i < _bejegyzesek.getBejegyzesek().size(); i++)
@@ -99,10 +101,10 @@ public class Main {
 
             }
         }
-        System.out.print(String.format("15-nel kevesebb like: %s", kevesek));
+        System.out.print(String.format("15-nel kevesebb like: %s\n", kevesek));
 
-        
-
+        _bejegyzesek.getBejegyzesek().sort(Comparator.comparing(Bejegyzes::getLikeok));
+        System.out.print(_bejegyzesek);
 
 
     }
