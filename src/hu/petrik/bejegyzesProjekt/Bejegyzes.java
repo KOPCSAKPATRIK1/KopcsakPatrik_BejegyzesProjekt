@@ -9,6 +9,7 @@ public class Bejegyzes
     private int likeok;
     private LocalDateTime letrejott;
     private LocalDateTime szerkesztve;
+    private Boolean szerkesztveBool;
 
     Bejegyzes(String szerzo, String tartalom)
     {
@@ -17,6 +18,8 @@ public class Bejegyzes
         this.likeok = 0;
         this.letrejott = LocalDateTime.now();
         this.szerkesztve = LocalDateTime.now();
+        this.szerkesztveBool = false;
+
     }
 
     public String getSzerzo(String szerzo)
@@ -33,6 +36,7 @@ public class Bejegyzes
     {
         this.tartalom = tartalom;
         this.szerkesztve = LocalDateTime.now();
+        this.szerkesztveBool = true;
     }
 
     public int getLikeok()
@@ -50,6 +54,7 @@ public class Bejegyzes
         return this.szerkesztve;
     }
 
+
     public void like()
     {
         this.likeok ++;
@@ -58,7 +63,14 @@ public class Bejegyzes
     @Override
     public String toString()
     {
-        return  String.format("\n%s - %d - %s\nSzerkeztve: %s\n%s\n", this.szerzo, this.likeok, this.letrejott, this.szerkesztve, this.tartalom);
+        if (szerkesztveBool == true)
+        {
+            return  String.format("\n%s - %d - %s\nSzerkeztve: %s\n%s\n", this.szerzo, this.likeok, this.letrejott, this.szerkesztve, this.tartalom);
+        }
+       else
+        {
+            return  String.format("\n%s - %d - %s\n%s\n", this.szerzo, this.likeok, this.letrejott, this.tartalom);
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package hu.petrik.bejegyzesProjekt;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -106,6 +107,18 @@ public class Main {
         _bejegyzesek.getBejegyzesek().sort(Comparator.comparing(Bejegyzes::getLikeok));
         System.out.print(_bejegyzesek);
 
+        try {
+            FileWriter FW = new FileWriter("sortedBejegyzesek.txt");
+            for (int i = 0; i< _bejegyzesek.getBejegyzesek().size();i++){
+                FW.write(String.valueOf(_bejegyzesek.getBejegyzesek().get(i)));
+                FW.write("\n");
+            }
+            FW.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
     }
 }
